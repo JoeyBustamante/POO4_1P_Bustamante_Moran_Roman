@@ -15,6 +15,5 @@ public class CodigoInvalidoException extends Exception {
         super(mensaje);
         this.mensaje = mensaje;
     }
-   
-    
+  
 }

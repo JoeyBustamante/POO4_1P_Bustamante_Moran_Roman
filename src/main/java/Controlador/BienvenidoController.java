@@ -78,7 +78,7 @@ public class BienvenidoController implements Initializable {
        contenedor.setMaxSize(700, 700);
        contenedor.setMinSize(700, 700);
        
-       InputStream inputStreams = new FileInputStream("src/main/resources/imagen/mapa.PNG");
+       InputStream inputStreams = new FileInputStream("src/main/resources/imagen/mapa.png");
        Image mapa = new Image(inputStreams);
        ImageView imgv = new ImageView(mapa);
        imgv.setFitHeight(450);
