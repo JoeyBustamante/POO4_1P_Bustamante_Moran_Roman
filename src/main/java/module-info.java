@@ -1,8 +1,10 @@
-module joeybustamante.proyectosegundoparcial {
+module modelo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;
 
-    opens joeybustamante.proyectosegundoparcial to javafx.fxml;
+    opens modelo to javafx.fxml;
+    opens Controlador to javafx.fxml;
     exports modelo;
+    exports Controlador;
 }
