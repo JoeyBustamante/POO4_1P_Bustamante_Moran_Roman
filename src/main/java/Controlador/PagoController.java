@@ -31,11 +31,7 @@ import modelo.Promocion;
 import modelo.CodigoInvalidoException;
 import modelo.DatosIncompletosExcpetion;
 
-/**
- * FXML Controller class
- *
- * @author Yumi
- */
+
 public class PagoController implements Initializable {
     TextField txtnumero=new TextField();
     TextField txtFechaExpiracion=new TextField();

@@ -32,11 +32,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Yumi
- */
+
 public class InicioSesionController implements Initializable {
     private ArrayList <Usuario> ListaUsuarios= new ArrayList<>();
     public static Usuario usuarioSeleccionado;

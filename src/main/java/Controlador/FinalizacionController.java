@@ -24,11 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Pago;
-/*
- * FXML Controller class
- *
- * @author Yumi
- */
+
 public class FinalizacionController implements Initializable {
     @FXML
     private Label codigo;
