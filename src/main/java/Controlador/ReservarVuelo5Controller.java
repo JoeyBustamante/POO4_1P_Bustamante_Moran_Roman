@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -29,6 +30,8 @@ public class ReservarVuelo5Controller implements Initializable {
     private VBox ContenedorTarifas;
     public static Tarifa TarifaViaje2;
      private ArrayList<Tarifa> tarifas= new ArrayList<>();
+    @FXML
+    private ScrollPane Fondo;
 
     /**
      * Initializes the controller class.

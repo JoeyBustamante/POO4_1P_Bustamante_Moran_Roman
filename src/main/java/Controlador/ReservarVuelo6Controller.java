@@ -30,15 +30,36 @@ public class ReservarVuelo6Controller implements Initializable {
    private VBox contenedorprimervuelo;
    @FXML
    private VBox contenedorsegundorvuelo;
+    @FXML
+    private VBox ContenedorTarifas;
+    @FXML
+    private Label fechaIda;
+    @FXML
+    private Label Partida;
+    @FXML
+    private Label FechaRegreso;
+    @FXML
+    private Label Regreso;
+    @FXML
+    private Label Total;
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CargarPrimerVuelo();
         CargarSegundoVuelo();
-        
+        ContenedorTarifas.setSpacing(20);
+        ContenedorTarifas.setStyle("-fx-border-color: black; " + "-fx-border-width: 2px; " + "-fx-padding: 10px;");
     }    
     void CargarPrimerVuelo(){
         HBox contenedorHorizontal =new HBox();
-        Label duracion= new Label("Duracion: "+ReservarVuelo2Controller.vueloseleccionado.getDuracion());
+        fechaIda.setText("Fecha de ida: "+ReservarVueloController.fecha_partida );
+        Partida.setText(ReservarVuelo2Controller.vueloseleccionado.getOrigen()+" - "+ReservarVuelo2Controller.vueloseleccionado.getDestino());
+        FechaRegreso.setText("Fecha de regreso: "+ReservarVueloController.fecha_Regreso );
+        Regreso.setText(ReservarVuelo2Controller.vueloseleccionado.getDestino()+" - "+ReservarVuelo2Controller.vueloseleccionado.getOrigen());
+        Total.setText("El total a pagar es: "+ReservarVuelo2Controller.vueloseleccionado.getPrecio()+ReservarVuelo4Controller.vueloseleccionado2.getPrecio());
+
+        Label duracion= new Label("Duracion: "+ReservarVuelo2Controller.vueloseleccionado.getDuracion()+"horas");
         HBox contenedorBoton =new HBox();
         Button boton=new Button("Detalles");
         boton.setOnAction(e->{
@@ -47,6 +68,7 @@ public class ReservarVuelo6Controller implements Initializable {
         Label Vuelo= new Label("Vuelo:"+ ReservarVuelo2Controller.vueloseleccionado.getCodigoVuelo());
         Label CodigoAvion= new Label(ReservarVuelo2Controller.vueloseleccionado.getCodigoAvion());
         Label tarifa = new Label(String.valueOf(ReservarVuelo3Controller.TarifaViaje1.getTipo()));
+        root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(Vuelo,CodigoAvion,tarifa);
         Scene popup= new Scene(root);
         st.setScene(popup);
@@ -60,9 +82,10 @@ public class ReservarVuelo6Controller implements Initializable {
             Label Precio=new Label(String.valueOf(ReservarVuelo2Controller.vueloseleccionado.getPrecio()));
              contenedorHorizontal.setSpacing(20);
              contenedorHorizontal.getChildren().addAll(HoraInicio,separador,HoraLlegada);
-             contenedorBoton.setAlignment(Pos.CENTER_LEFT);
+             contenedorBoton.setAlignment(Pos.CENTER);
              contenedorBoton.setPadding(new Insets(0,0,0,10));
              contenedorBoton.getChildren().add(boton);
+             contenedorprimervuelo.setStyle("-fx-border-color: black; " + "-fx-border-width: 2px; " + "-fx-padding: 10px;");
            contenedorprimervuelo.getChildren().addAll(duracion,contenedorHorizontal,Precio,contenedorBoton);
              
              
@@ -70,7 +93,7 @@ public class ReservarVuelo6Controller implements Initializable {
     }
     void CargarSegundoVuelo(){
         HBox contenedorHorizontal =new HBox();
-        Label duracion= new Label("Duracion: "+ReservarVuelo4Controller.vueloseleccionado2.getDuracion());
+        Label duracion= new Label("Duracion: "+ReservarVuelo4Controller.vueloseleccionado2.getDuracion()+"horas");
         HBox contenedorBoton =new HBox();
         Button boton=new Button("Detalles");
         boton.setOnAction(e->{
@@ -96,6 +119,7 @@ public class ReservarVuelo6Controller implements Initializable {
              contenedorBoton.setAlignment(Pos.CENTER_LEFT);
              contenedorBoton.setPadding(new Insets(0,0,0,10));
              contenedorBoton.getChildren().add(boton);
+             contenedorsegundorvuelo.setStyle("-fx-border-color: black; " + "-fx-border-width: 2px; " + "-fx-padding: 10px;");
              contenedorsegundorvuelo.getChildren().addAll(duracion,contenedorHorizontal,Precio,contenedorBoton);
             
         

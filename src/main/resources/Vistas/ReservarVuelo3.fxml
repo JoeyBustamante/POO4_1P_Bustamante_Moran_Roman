@@ -4,12 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="Fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ReservarVuelo3Controller">
+<ScrollPane fx:id="Fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4CE8DA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ReservarVuelo3Controller">
    <content>
-      <VBox fx:id="ContenedorTarifas" alignment="TOP_CENTER" prefHeight="717.0" prefWidth="585.0" spacing="15.0">
+      <VBox fx:id="ContenedorTarifas" alignment="TOP_CENTER" prefHeight="717.0" prefWidth="585.0" spacing="15.0" style="-fx-background-color: #4CE8DA;">
          <children>
-            <Label text="Label" />
+            <Label text="Selecciona tu tarifa">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
          </children>
          <padding>
             <Insets top="15.0" />

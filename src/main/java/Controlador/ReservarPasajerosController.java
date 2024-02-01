@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package Controlador;
 
 import java.net.URL;
@@ -46,7 +43,8 @@ public class ReservarPasajerosController implements Initializable {
             }
         });
         for(int i=1; i<=ReservarVueloController.numeroP;i++){
-            Label pasajero= new Label("Persona: "+String.valueOf(i));
+            Label pasajero= new Label("     Persona: "+String.valueOf(i));
+            pasajero.setAlignment(Pos.CENTER_LEFT);
             Label Nombre=new Label("Nombre");
             Label Apellido=new Label("Apellido");
             Label Pasaporte= new Label("Pasaporte");
@@ -88,6 +86,7 @@ public class ReservarPasajerosController implements Initializable {
             SeccionUno.getChildren().addAll(pasajero,seccionNombre,seccionApellido);
             SeccionDos.getChildren().addAll(seccionPasaporte,seccionCorreo);
             ContenedorPasajeros.getChildren().addAll(SeccionUno,SeccionDos);
+            ContenedorP.setStyle("-fx-border-color: black; " + "-fx-border-width: 2px; " +"-fx-padding: 10px;");
             ContenedorP.getChildren().add(ContenedorPasajeros);
           
       

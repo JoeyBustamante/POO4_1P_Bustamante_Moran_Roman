@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package Controlador;
 
 import static Controlador.InicioSesionController.iniciarcerrar;
+import static Controlador.InicioSesionController.usuarioSeleccionado;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -37,23 +36,25 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import modelo.App;
 import modelo.Promocion;
+import modelo.Usuario;
 
-/**
- * FXML Controller class
- *
- * @author Yumi
- */
-public class BienvenidoController implements Initializable {
+
+public class BienvenidoController implements Initializable  {
     public static ArrayList<Promocion> promociones=new ArrayList<>();
+    @FXML
+    Label Bienvenido;
+    
 
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        
         VentanaPedidos();
         CargarLista();
+        String g =usuarioSeleccionado.getNombre();
+        Bienvenido.setText("Hola Bienvenido "+g);
+        
+       
        
         
       
@@ -82,8 +83,8 @@ public class BienvenidoController implements Initializable {
        Image mapa = new Image(inputStreams);
        ImageView imgv = new ImageView(mapa);
        imgv.setFitHeight(450);
-       imgv.setFitWidth(600);
-       contenedor.setMaxSize(450, 650);
+       imgv.setFitWidth(701);
+       contenedor.setMaxSize(450, 701);
        contenedor.getChildren().addAll(imgv);
        imgv.setLayoutX(15);
        imgv.setLayoutY(15);
@@ -126,7 +127,7 @@ public class BienvenidoController implements Initializable {
                Descuentos.setStyle("-fx-font-family:'Arial Black';");
                cheladeria.getChildren().addAll(Descuentos);
                HBox cdatos = new HBox();
-               Label datos = new Label("\n"+local.getPais()+"\n\n"+"Descuento: "+local.getDescuento()+"\n\n\n\n\n\n");
+               Label datos = new Label("\n"+local.getPais()+"\n"+ local.getCodigo()+"\n"+"Descuento: "+local.getDescuento()+"%"+"\n\n\n\n\n\n");
                cdatos.getChildren().addAll(datos);
                HBox ctiempo = new HBox();
                Label tiempo = new Label();
@@ -158,8 +159,8 @@ public class BienvenidoController implements Initializable {
                 imgv.setLayoutX(local.getCoordenadaX());
                 imgv.setLayoutY(local.getCoordenadaY()*-1);
                 System.out.println("ya");
-                imgv.setFitHeight(60);
-                imgv.setFitWidth(60);
+                imgv.setFitHeight(30);
+                imgv.setFitWidth(30);
                 System.out.println("con exito");
                 
             }
@@ -219,7 +220,7 @@ public class BienvenidoController implements Initializable {
                         listaElementos.clear();
                         try{
                             String info = null;
-                            File file= new File("src/main/resources/Textos/Pagos.txt");
+                            File file= new File("src/main/resources/Textos/reservas.txt");
                             FileReader fw= new FileReader(file);
                             BufferedReader br = new BufferedReader(fw);
                             while((info=br.readLine())!=null){
@@ -239,6 +240,7 @@ public class BienvenidoController implements Initializable {
     void CargarLista(){
         try(BufferedReader bfr = new BufferedReader(new FileReader(new File("src/main/resources/Textos/promociones.txt")))){
            String linea = bfr.readLine();
+           
            while(linea != null){
                String[] lineas = linea.split(",");
                double coordenadax = Double.parseDouble(lineas[0]);

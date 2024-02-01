@@ -5,12 +5,16 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <ScrollPane fx:id="Fondo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="497.0" stylesheets="@../Estilos/Estilos1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ReservarVuelo2Controller">
    <content>
-      <VBox fx:id="Fondo" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="480.0" spacing="20.0">
+      <VBox fx:id="Fondo1" alignment="TOP_CENTER" prefHeight="500.0" prefWidth="480.0" spacing="20.0" style="-fx-background-color: #4CE8DA;">
          <children>
-            <Label alignment="TOP_CENTER" text="Label" />
+            <Label fx:id="idaYVuelta" alignment="TOP_CENTER" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
             <HBox fx:id="ContenedorSeleccion" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Ordenar por" />

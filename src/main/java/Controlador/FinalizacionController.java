@@ -20,6 +20,7 @@ import java.io.ObjectOutputStream;
 import modelo.reserva;
 import Controlador.PagoController;
 import java.io.IOException;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import modelo.Pago;
@@ -39,6 +40,8 @@ public class FinalizacionController implements Initializable {
     @FXML
     private HBox contenedorLabel;
      public static Label labelCerrar= new Label("hi");
+    @FXML
+    private Button Aceptar;
 
    
 
@@ -49,6 +52,8 @@ public class FinalizacionController implements Initializable {
         contenedorLabel.getChildren().add(labelCerrar);
        CodigoReserva=generarCadenaAleatoria();
        codigo.setText(CodigoReserva);
+       Aceptar.setOnAction(A->{
+       });
         
         GenerarReserva();
         EscribirPago();  
@@ -93,9 +98,12 @@ public class FinalizacionController implements Initializable {
             e.printStackTrace();
         } finally{
             try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/Textos/reservas.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/Textos/Reservas.txt",true));
             writer.write(rs.getCodigoReserva()+","+rs.getCedulaCliente()+","+rs.getCiudadOrigen()+","+rs.getCiudadDestino()+","+rs.getFechaSalida()+","+String.valueOf(rs.getNumeroPasajeros())+","+String.valueOf(rs.getNumeroVuelo())+","+String.valueOf(rs.getNumeroVueloRegreso())+","+rs.getTipoTarifaIda()+rs.getTipoTarifaRegreso()+"\n");
+            
             writer.close();
+            
+            
             }catch(Exception a){
                 
                 
@@ -106,8 +114,8 @@ public class FinalizacionController implements Initializable {
     void EscribirPago(){
         try {
             // Crear un BufferedWriter para escribir en el archivo
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/Textos/Pagos.txt"));
-            writer.write(pago.getIdpago()+","+pago.getCodigoReserva()+","+pago.getTotalRserva()+","+pago.getDescuento()+","+pago.getFormaPago()+","+pago.getTotalPagar());
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/Textos/Pagos.txt",true));
+            writer.write(pago.getIdpago()+","+pago.getCodigoReserva()+","+pago.getTotalRserva()+","+pago.getDescuento()+","+pago.getFormaPago()+","+pago.getTotalPagar()+"/n");
 
             writer.close();
 
@@ -122,6 +130,9 @@ public class FinalizacionController implements Initializable {
         
         
     }
+    
+    
+    
     
     
 }

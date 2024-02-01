@@ -1,8 +1,16 @@
-Río de Janeiro,Brasil
+Rio de Janeiro,Brasil
 Barcelona,España
 Toronto,Canada
 Cali,Colombia
-México,México
-...
+Mexico,Mexico
+New York,USA
+Shangai,China
+Sidney,Australia
+Buenos Aires,Argentina
+Ankara,Turquia
+Paris,Francia
+Italia,Roma
+lima,Peru
+Abuya,Nigeria
+El Cairo,Egipto
 
-agregar más datos, procure que sean destinos de paises que esten en el archivo de promociones y otros no.

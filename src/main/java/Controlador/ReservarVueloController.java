@@ -37,7 +37,7 @@ public class ReservarVueloController implements Initializable {
    public static String LugarLlegada;
    public static String fecha_partida;
    public static String fecha_Regreso;
-   public static int  numeroP;
+   public static int  numeroP=1;
    
    private ComboBox<String> origen= new ComboBox<>() ;
    private Spinner sp;
@@ -93,10 +93,10 @@ public class ReservarVueloController implements Initializable {
         
     }
     void cargaSpiner(){
-        ObservableList lis= FXCollections.observableArrayList(1,2,3,4,5);
+        ObservableList lis= FXCollections.observableArrayList(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
         sp=new Spinner<Integer>(lis);
         sp.setOnMouseClicked(e->{
-         numeroP=(int) sp.getValue();});
+         numeroP=(int ) sp.getValue();});
         contenedorcantidad.getChildren().add(sp);
         
     }

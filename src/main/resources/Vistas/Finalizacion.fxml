@@ -24,8 +24,8 @@
             <Label fx:id="codigo" text="Label" />
          </children>
       </HBox>
-      <Label text="Se ah enviado un email con confirmacion , no olvide ahcer check en las prox 24 horas" />
+      <Label text="Se ha enviado un email de confirmacion , no olvide hacer check en las prox 24 horas" />
       <HBox fx:id="contenedorLabel" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" />
-      <Button mnemonicParsing="false" text="Button" />
+      <Button fx:id="Aceptar" mnemonicParsing="false" text="Aceptar" />
    </children>
 </VBox>

@@ -118,7 +118,7 @@ public class InicioSesionController implements Initializable {
          try{
          Stage actual=(Stage) usuario.getScene().getWindow();
          FXMLLoader fxmlloader =new FXMLLoader(getClass().getResource("/Vistas/Bienvenido.fxml"));
-         Scene sc=new Scene(fxmlloader.load(),807,480);
+         Scene sc=new Scene(fxmlloader.load(),990,537);
          actual.setScene(sc);
          }catch(Exception e){
              e.printStackTrace();

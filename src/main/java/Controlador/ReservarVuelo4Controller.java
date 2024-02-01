@@ -30,6 +30,12 @@ import modelo.Vuelo;
  * 
  */
 public class ReservarVuelo4Controller implements Initializable {
+    
+    String ida="";
+    String vuelta="";
+    
+    @FXML
+    private Label idaYVuelta2;
      @FXML
      private HBox ContenedorSeleccion;
      public static Vuelo vueloseleccionado2;   
@@ -55,6 +61,7 @@ public class ReservarVuelo4Controller implements Initializable {
             ContenedorSeleccion.getChildren().add(cb);
         CargarVuelos();
         DesplegarVuelos();
+        idaYVuelta2.setText("Selecciona tu vuelo"+ida+" - "+vuelta);
     }
     void CargarVuelos(){
         try{
@@ -66,7 +73,9 @@ public class ReservarVuelo4Controller implements Initializable {
             String [] informacion= linea.split(",");
             Vuelo vuelo= new Vuelo(informacion[0],informacion[1],informacion[2],Integer.parseInt(informacion[3]),informacion[4],informacion[5],informacion[6],Double.parseDouble(informacion[7]));
             if(vuelo.getOrigen().equals(ReservarVueloController.LugarLlegada)&&vuelo.getDestino().equals(ReservarVueloController.LugarSalida)){
-            lista.add(vuelo);   
+            lista.add(vuelo);
+            ida=vuelo.getOrigen();
+            vuelta=vuelo.getDestino();
             }
         }
         }catch(Exception e){
@@ -102,6 +111,8 @@ public class ReservarVuelo4Controller implements Initializable {
           contenedorInformacion.getStylesheets().add(getClass().getResource("/Estilos/Estilos1.css").toExternalForm());
           contenedorHorizontal.getChildren().addAll(HoraInicio,separador,HoraLlegada);
           contenedorInformacion.getChildren().addAll(duracion,contenedorHorizontal,Precio);
+          contenedorInformacion.setStyle("-fx-border-color: red; " + "-fx-border-width: 2px; " + "-fx-padding: 10px;");
+
           ContenedorVuelos.getChildren().add(contenedorInformacion);
            
     } 

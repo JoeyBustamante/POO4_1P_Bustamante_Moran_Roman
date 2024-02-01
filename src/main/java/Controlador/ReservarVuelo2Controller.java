@@ -19,6 +19,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -38,6 +39,10 @@ public class ReservarVuelo2Controller implements Initializable {
     private VBox ContenedorVuelos;
     @FXML
     private HBox ContenedorSeleccion; 
+    @FXML
+    private ScrollPane Fondo;
+    @FXML
+    private Label idaYVuelta;
    
     
     @Override
@@ -46,6 +51,8 @@ public class ReservarVuelo2Controller implements Initializable {
         CargarCombobox();
         CargarVuelos();
        DesplegarVuelos();
+       
+       
    
     } 
     void CargarCombobox(){
@@ -65,10 +72,12 @@ public class ReservarVuelo2Controller implements Initializable {
         BufferedReader br=new BufferedReader( fr);
         String linea;
         while((linea=br.readLine())!=null){
-            String [] informacion= linea.split(",");
+            String [] informacion= linea.strip().split(",");
             Vuelo vuelo= new Vuelo(informacion[0],informacion[1],informacion[2],Integer.parseInt(informacion[3]),informacion[4],informacion[5],informacion[6],Double.parseDouble(informacion[7]));
            if(vuelo.getOrigen().equals(ReservarVueloController.LugarSalida)&&(vuelo.getDestino().equals(ReservarVueloController.LugarLlegada))){
-                lista.add(vuelo);
+                idaYVuelta.setText("Selecciona tu vuelo " +vuelo.getOrigen()+" - "+vuelo.getDestino());
+               lista.add(vuelo);
+                
                 System.out.println(vuelo.getDestino());
            }
             
@@ -108,6 +117,7 @@ public class ReservarVuelo2Controller implements Initializable {
           contenedorInformacion.getStylesheets().add(getClass().getResource("/Estilos/Estilos1.css").toExternalForm());
           contenedorHorizontal.getChildren().addAll(HoraInicio,separador,HoraLlegada);
           contenedorInformacion.getChildren().addAll(duracion,contenedorHorizontal,Precio);
+          contenedorInformacion.setStyle("-fx-border-color: red; " + "-fx-border-width: 2px; " + "-fx-padding: 10px;");
           
           ContenedorVuelos.getChildren().add(contenedorInformacion);
            ContenedorVuelos.setStyle("-fx-background-image:url(\"/imagen/Fondo3.jpg\");\n" +

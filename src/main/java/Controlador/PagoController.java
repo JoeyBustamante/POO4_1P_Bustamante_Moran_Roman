@@ -108,7 +108,7 @@ public class PagoController implements Initializable {
            Codigo.setText("Descuento: "+String.valueOf(p.getDescuento())); 
            Total=Total-p.getDescuento();
            Descuento=p.getDescuento();
-           PagoTotal.setText(String.valueOf(Total));
+           PagoTotal.setText(String.valueOf(Total)+"%");
             
         }else{
               
@@ -140,9 +140,11 @@ public class PagoController implements Initializable {
                 
                 
             }else{
+                
                  actual= (Stage) ResumenPedido.getScene().getWindow();
                 Scene sc= new Scene(App.loadFXML("/Vistas/Finalizacion"));
                 actual.setScene(sc);
+                
                 InicioSesionController.iniciarcerrar(FinalizacionController.labelCerrar, actual);
                 
             }
@@ -165,8 +167,8 @@ public class PagoController implements Initializable {
         Stage actual= (Stage) ResumenPedido.getScene().getWindow();
         Stage cancelacion=new Stage();
         VBox root=new VBox();
-        Button confirmar =new Button();
-         Button cancelar =new Button();
+        Button confirmar =new Button("Confirmar");
+         Button cancelar =new Button("Cancelar");
         HBox botones=new HBox();
         Label label= new Label("Seguro quieres cancelar¿?");
         root.setAlignment(Pos.CENTER);
@@ -177,6 +179,7 @@ public class PagoController implements Initializable {
         });
         cancelar.setOnAction(A->{
         cancelacion.close();});
+        botones.setSpacing(20);
         botones.getChildren().addAll(confirmar,cancelar);
         root.getChildren().addAll(label,botones);
         Scene sc=new Scene(root,400,560);
