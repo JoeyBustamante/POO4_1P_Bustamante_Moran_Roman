@@ -38,7 +38,11 @@ import javafx.scene.layout.VBox;
 import modelo.App;
 import modelo.Promocion;
 
-
+/**
+ * FXML Controller class
+ *
+ * @author Yumi
+ */
 public class BienvenidoController implements Initializable {
     public static ArrayList<Promocion> promociones=new ArrayList<>();
 
