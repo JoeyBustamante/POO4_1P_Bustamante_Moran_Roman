@@ -43,10 +43,10 @@ public class ReservarVuelo4Controller implements Initializable {
      ObservableList<Vuelo> lista= FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cb.getItems().addAll("Duracion");
+        cb.getItems().addAll("Duración");
        
            cb.setOnAction(a->{
-       if (cb.getSelectionModel().getSelectedItem().equals("Duracion")){
+       if (cb.getSelectionModel().getSelectedItem().equals("Duración")){
        FXCollections.sort(lista);
        DesplegarVuelos();
             }
@@ -88,7 +88,7 @@ public class ReservarVuelo4Controller implements Initializable {
                     a.printStackTrace();
                 }
           });
-            Label duracion= new Label("Duracion: "+v.getDuracion());
+            Label duracion= new Label("Duración: "+v.getDuracion());
             Label separador=new Label("-------------------");
             Label HoraInicio=new Label(v.getHsalida());
             Label HoraLlegada=new Label(v.getHLlegada());
@@ -98,7 +98,7 @@ public class ReservarVuelo4Controller implements Initializable {
           contenedorInformacion.setSpacing(10);
           contenedorInformacion.setAlignment(Pos.CENTER);
           contenedorHorizontal.setAlignment(Pos.CENTER);
-          contenedorInformacion.setId("ContenedorInformacion");
+          contenedorInformacion.setId("Contenedor Información");
           contenedorInformacion.getStylesheets().add(getClass().getResource("/Estilos/Estilos1.css").toExternalForm());
           contenedorHorizontal.getChildren().addAll(HoraInicio,separador,HoraLlegada);
           contenedorInformacion.getChildren().addAll(duracion,contenedorHorizontal,Precio);

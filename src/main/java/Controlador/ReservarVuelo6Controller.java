@@ -70,7 +70,7 @@ public class ReservarVuelo6Controller implements Initializable {
     }
     void CargarSegundoVuelo(){
         HBox contenedorHorizontal =new HBox();
-        Label duracion= new Label("Duracion: "+ReservarVuelo4Controller.vueloseleccionado2.getDuracion());
+        Label duracion= new Label("Duración: "+ReservarVuelo4Controller.vueloseleccionado2.getDuracion());
         HBox contenedorBoton =new HBox();
         Button boton=new Button("Detalles");
         boton.setOnAction(e->{

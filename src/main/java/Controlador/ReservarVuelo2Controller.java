@@ -51,7 +51,7 @@ public class ReservarVuelo2Controller implements Initializable {
     void CargarCombobox(){
         Ordenar.getItems().addAll("Duracion");
         Ordenar.setOnAction(a->{
-       if (Ordenar.getSelectionModel().getSelectedItem().equals("Duracion")){
+       if (Ordenar.getSelectionModel().getSelectedItem().equals("Duración")){
        FXCollections.sort(lista);
        DesplegarVuelos();
        }
@@ -110,7 +110,7 @@ public class ReservarVuelo2Controller implements Initializable {
           contenedorInformacion.getChildren().addAll(duracion,contenedorHorizontal,Precio);
           
           ContenedorVuelos.getChildren().add(contenedorInformacion);
-           ContenedorVuelos.setStyle("-fx-background-image:url(\"/imagen/Fondo3.jpg\");\n" +
+           ContenedorVuelos.setStyle("-fx-background-image:url(\"/imagen/fondo2.png\");\n" +
 "    -fx-background-size:cover;");
     }
     

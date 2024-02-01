@@ -38,7 +38,7 @@ public class ReservarVuelo5Controller implements Initializable {
         // TODO
         CargaTipoViajes();
         DesplegarViajes();
-        ContenedorTarifas.setStyle("-fx-background-image:url(\"/imagen/Fondo3.jpg\");\n" +
+        ContenedorTarifas.setStyle("-fx-background-image:url(\"/imagen/fondo2.png\");\n" +
 "    -fx-background-size:cover;");
     } 
      void CargaTipoViajes(){

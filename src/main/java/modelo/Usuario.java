@@ -9,6 +9,7 @@ package modelo;
  * @author Yumi
  */
 public class Usuario {
+
     private String cedula;
     private String Nombre;
     private String Apellido;
@@ -62,6 +63,28 @@ public class Usuario {
     public String getContra() {
         return contra;
     }
-     
-    
+
+    public String getGender() {
+        String gender = "";
+        String name = this.Nombre.toLowerCase();
+
+        if (name.endsWith("a")) {
+            gender = "F";
+        } else if (name.endsWith("o")) {
+            gender = "M";
+        } else if (name.endsWith("s") || name.endsWith("r")) {
+            char lastChar = name.charAt(name.length() - 2);
+            if (lastChar == 'o' || lastChar == 'e') {
+                gender = "M";
+            } else {
+                gender = "F";
+            }
+        } else {
+            // Si no se reconoce el nombre, se asume que es mujer
+            gender = "F";
+        }
+
+        return gender;
+    }
+
 }

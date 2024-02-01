@@ -26,38 +26,39 @@ import modelo.App;
  */
 public class ReservarPasajerosController implements Initializable {
 
-     
- @FXML
+    @FXML
     private VBox ContenedorP;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      cargarPasajeros();
-        
-    } 
-    void cargarPasajeros(){
-        Button bt=new Button("Ingresar");
-        bt.setOnAction(a->{
-            try{
-             Scene sc = new Scene(App.loadFXML("/Vistas/Pago"));
-             Stage st=(Stage) ContenedorP.getScene().getWindow();
-             st.setScene(sc);
-            }catch(Exception i){
-            i.printStackTrace();
+        cargarPasajeros();
+
+    }
+
+    void cargarPasajeros() {
+        Button bt = new Button("Ingresar");
+        bt.setOnAction(a -> {
+            try {
+                Scene sc = new Scene(App.loadFXML("/Vistas/Pago"));
+                Stage st = (Stage) ContenedorP.getScene().getWindow();
+                st.setScene(sc);
+            } catch (Exception i) {
+                i.printStackTrace();
             }
         });
-        for(int i=1; i<=ReservarVueloController.numeroP;i++){
-            Label pasajero= new Label("Persona: "+String.valueOf(i));
-            Label Nombre=new Label("Nombre");
-            Label Apellido=new Label("Apellido");
-            Label Pasaporte= new Label("Pasaporte");
-            Label Correo=new Label("Correo");
-            HBox ContenedorPasajeros=new HBox();
-            VBox SeccionUno= new VBox();
-            VBox SeccionDos= new VBox();
-            HBox seccionNombre =new HBox();
-            HBox seccionApellido =new HBox();
-             HBox seccionPasaporte =new HBox();
-            HBox seccionCorreo =new HBox();
+        for (int i = 1; i <= ReservarVueloController.numeroP; i++) {
+            Label pasajero = new Label("Persona: " + String.valueOf(i));
+            Label Nombre = new Label("Nombre");
+            Label Apellido = new Label("Apellido");
+            Label Pasaporte = new Label("Pasaporte");
+            Label Correo = new Label("Correo");
+            HBox ContenedorPasajeros = new HBox();
+            VBox SeccionUno = new VBox();
+            VBox SeccionDos = new VBox();
+            HBox seccionNombre = new HBox();
+            HBox seccionApellido = new HBox();
+            HBox seccionPasaporte = new HBox();
+            HBox seccionCorreo = new HBox();
             /*Propiedades*/
             ContenedorPasajeros.setAlignment(Pos.CENTER);
             SeccionUno.setAlignment(Pos.CENTER);
@@ -71,30 +72,28 @@ public class ReservarPasajerosController implements Initializable {
             ContenedorPasajeros.setSpacing(15);
             SeccionUno.setSpacing(15);
             SeccionDos.setSpacing(15);
-            SeccionDos.setPadding(new Insets(22,0,0,0));
+            SeccionDos.setPadding(new Insets(22, 0, 0, 0));
             seccionNombre.setSpacing(15);
             seccionApellido.setSpacing(15);
             seccionPasaporte.setSpacing(15);
             seccionCorreo.setSpacing(15);
             /*Propiedades*/
-            TextField txtnombre=new TextField();
-            TextField txtApellido=new TextField();
-            TextField txtPasaporte=new TextField();
-            TextField txtCorreo=new TextField();
+            TextField txtnombre = new TextField();
+            TextField txtApellido = new TextField();
+            TextField txtPasaporte = new TextField();
+            TextField txtCorreo = new TextField();
             seccionNombre.getChildren().addAll(Nombre, txtnombre);
             seccionApellido.getChildren().addAll(Apellido, txtApellido);
             seccionPasaporte.getChildren().addAll(Pasaporte, txtPasaporte);
             seccionCorreo.getChildren().addAll(Correo, txtCorreo);
-            SeccionUno.getChildren().addAll(pasajero,seccionNombre,seccionApellido);
-            SeccionDos.getChildren().addAll(seccionPasaporte,seccionCorreo);
-            ContenedorPasajeros.getChildren().addAll(SeccionUno,SeccionDos);
+            SeccionUno.getChildren().addAll(pasajero, seccionNombre, seccionApellido);
+            SeccionDos.getChildren().addAll(seccionPasaporte, seccionCorreo);
+            ContenedorPasajeros.getChildren().addAll(SeccionUno, SeccionDos);
             ContenedorP.getChildren().add(ContenedorPasajeros);
-          
-      
-        } ContenedorP.getChildren().add(bt);
-       
-        
+
+        }
+        ContenedorP.getChildren().add(bt);
+
     }
-    
-    
+
 }

@@ -84,12 +84,12 @@ public class ReservarVuelo3Controller implements Initializable {
                HBox despliegueInfo= new HBox();
                despliegueInfo.setAlignment(Pos.CENTER);
                despliegueInfo.getChildren().add(info);
-              contenedorGeneral.setId("contenedorGeneral");
+              contenedorGeneral.setId("contenedor General");
                contenedorGeneral.getStylesheets().add(getClass().getResource("/Estilos/Estilos1.css").toExternalForm());
                contenedorGeneral.getChildren().add(despliegueInfo); 
            }
            ContenedorTarifas.getChildren().add(contenedorGeneral);
-           ContenedorTarifas.setStyle("-fx-background-image:url(\"/imagen/Fondo3.jpg\");\n" +
+           ContenedorTarifas.setStyle("-fx-background-image:url(\"/imagen/fondo2.png\");\n" +
 "    -fx-background-size:cover;");
            
            

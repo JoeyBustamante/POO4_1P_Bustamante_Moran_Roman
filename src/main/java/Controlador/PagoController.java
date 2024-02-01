@@ -37,13 +37,14 @@ import modelo.DatosIncompletosExcpetion;
  * @author Yumi
  */
 public class PagoController implements Initializable {
-    TextField txtnumero=new TextField();
-    TextField txtFechaExpiracion=new TextField();
-    PasswordField txtCVV=new PasswordField();
+
+    TextField txtnumero = new TextField();
+    TextField txtFechaExpiracion = new TextField();
+    PasswordField txtCVV = new PasswordField();
     public static int Descuento;
     public static char tipo;
     public static Stage actual;
-     @FXML
+    @FXML
     private TextField txtcodigo;
     @FXML
     private VBox rootTarjeta;
@@ -57,135 +58,127 @@ public class PagoController implements Initializable {
     private Label ResumenPedido;
     @FXML
     private RadioButton rb2;
-    public static double subtotal1=ReservarVuelo2Controller.vueloseleccionado.getPrecio()+(ReservarVuelo2Controller.vueloseleccionado.getPrecio()*ReservarVuelo3Controller.TarifaViaje1.getPorcentaje())/100;
-    public static double subtotal2=ReservarVuelo4Controller.vueloseleccionado2.getPrecio()+(ReservarVuelo4Controller.vueloseleccionado2.getPrecio()*ReservarVuelo5Controller.TarifaViaje2.getPorcentaje())/100;
-    public  static double Total=subtotal1+subtotal2;
+    public static double subtotal1 = ReservarVuelo2Controller.vueloseleccionado.getPrecio() + (ReservarVuelo2Controller.vueloseleccionado.getPrecio() * ReservarVuelo3Controller.TarifaViaje1.getPorcentaje()) / 100;
+    public static double subtotal2 = ReservarVuelo4Controller.vueloseleccionado2.getPrecio() + (ReservarVuelo4Controller.vueloseleccionado2.getPrecio() * ReservarVuelo5Controller.TarifaViaje2.getPorcentaje()) / 100;
+    public static double Total = subtotal1 + subtotal2;
     ToggleGroup grupoOpciones = new ToggleGroup();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         Codigo.setText("Codigo no valido");
-        ResumenPedido.setText("Subtotal= "+String.valueOf(subtotal1+subtotal2));
+        Codigo.setText("Código no válido");
+        ResumenPedido.setText("Subtotal= " + String.valueOf(subtotal1 + subtotal2));
         rb1.setToggleGroup(grupoOpciones);
         rb2.setToggleGroup(grupoOpciones);
-         PagoTotal.setText(String.valueOf(Total)); 
-         grupoOpciones.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
-        public void changed(ObservableValue<? extends Toggle> ov,Toggle old_toggle,Toggle new_toggle){
-            if(grupoOpciones.getSelectedToggle()==rb1){
-                tipo='E';
-                 rootTarjeta.getChildren().clear();
-                Label mensaje=new Label("Estimado cliente , tiene 24 horas para acercarse a retirar su pedido");
-                rootTarjeta.getChildren().add(mensaje);
-                 PagoTotal.setText(String.valueOf(Total)); 
-            }else{
-                 if(grupoOpciones.getSelectedToggle()==rb2){
-                      tipo='T';
-                     rootTarjeta.getChildren().clear();
-                     Label numero= new Label("Numero de tarjeta");
-                     Label fechaExpiracion= new Label("Fecha de expiracion");
-                     Label CVV= new Label("CVV");
-                     HBox contenedornumero= new HBox();
-                     HBox contenedorFecha= new HBox();
-                     HBox contenedorCVV= new HBox();
-                     contenedornumero.setAlignment(Pos.CENTER);
-                     contenedorFecha.setAlignment(Pos.CENTER);
-                     contenedorCVV.setAlignment(Pos.CENTER);
-                     contenedornumero.getChildren().addAll(numero,txtnumero);
-                     contenedorFecha.getChildren().addAll(fechaExpiracion,txtFechaExpiracion);
-                     contenedorCVV.getChildren().addAll(CVV,txtCVV);
-                     rootTarjeta.getChildren().addAll(contenedornumero,contenedorFecha,contenedorCVV);
-                 }  
+        PagoTotal.setText(String.valueOf(Total));
+        grupoOpciones.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
+                if (grupoOpciones.getSelectedToggle() == rb1) {
+                    tipo = 'E';
+                    rootTarjeta.getChildren().clear();
+                    Label mensaje = new Label("Estimado cliente , tiene 24 horas para acercarse a retirar su pedido");
+                    rootTarjeta.getChildren().add(mensaje);
+                    PagoTotal.setText(String.valueOf(Total));
+                } else {
+                    if (grupoOpciones.getSelectedToggle() == rb2) {
+                        tipo = 'T';
+                        rootTarjeta.getChildren().clear();
+                        Label numero = new Label("Numero de tarjeta");
+                        Label fechaExpiracion = new Label("Fecha de expiracion");
+                        Label CVV = new Label("CVV");
+                        HBox contenedornumero = new HBox();
+                        HBox contenedorFecha = new HBox();
+                        HBox contenedorCVV = new HBox();
+                        contenedornumero.setAlignment(Pos.CENTER);
+                        contenedorFecha.setAlignment(Pos.CENTER);
+                        contenedorCVV.setAlignment(Pos.CENTER);
+                        contenedornumero.getChildren().addAll(numero, txtnumero);
+                        contenedorFecha.getChildren().addAll(fechaExpiracion, txtFechaExpiracion);
+                        contenedorCVV.getChildren().addAll(CVV, txtCVV);
+                        rootTarjeta.getChildren().addAll(contenedornumero, contenedorFecha, contenedorCVV);
+                    }
+                }
             }
-        }
-});
-}
-  @FXML
-    void ComprobarCodigo(ActionEvent event) {
-       
-           for (Promocion p: BienvenidoController.promociones){
-               
-           if(txtcodigo.getText().equals(p.getCodigo())&&ReservarVueloController.LugarLlegada.equals(p.getPais())){
-                System.out.println("entra 2");
-           Codigo.setText("Descuento: "+String.valueOf(p.getDescuento())); 
-           Total=Total-p.getDescuento();
-           Descuento=p.getDescuento();
-           PagoTotal.setText(String.valueOf(Total));
-            
-        }else{
-              
-           }
-       
-    
-           
+        });
     }
-        
-    
-       
-          
-               
-           
+
+    @FXML
+    void ComprobarCodigo(ActionEvent event) {
+
+        for (Promocion p : BienvenidoController.promociones) {
+
+            if (txtcodigo.getText().equals(p.getCodigo()) && ReservarVueloController.LugarLlegada.equals(p.getPais())) {
+                System.out.println("entra 2");
+                Codigo.setText("Descuento: " + String.valueOf(p.getDescuento()));
+                Total = Total - p.getDescuento();
+                Descuento = p.getDescuento();
+                PagoTotal.setText(String.valueOf(Total));
+
+            } else {
+
+            }
+
         }
-      @FXML
-    void Pagar(ActionEvent event) throws IOException {
-        if(rb2.isSelected()==true){
-            if(txtnumero.getText()==""||txtCVV.getText()==""|| txtcodigo.getText()==""){
-                try{
-                    throw new  DatosIncompletosExcpetion("Completa los datos");
-            }catch( DatosIncompletosExcpetion a){
-                Alert alerta = new Alert(AlertType.INFORMATION);
-                 alerta.setTitle("Información");
-                 alerta.setHeaderText(null);
-                 alerta.setContentText("Completa los datos");
-                 alerta.showAndWait();
-            }
-                
-                
-            }else{
-                 actual= (Stage) ResumenPedido.getScene().getWindow();
-                Scene sc= new Scene(App.loadFXML("/Vistas/Finalizacion"));
-                actual.setScene(sc);
-                InicioSesionController.iniciarcerrar(FinalizacionController.labelCerrar, actual);
-                
-            }
-        }else{
-            if(rb1.isSelected()==true){
-                Stage actual= (Stage) ResumenPedido.getScene().getWindow();
-                Scene sc= new Scene(App.loadFXML("/Vistas/Finalizacion"));
-                actual.setScene(sc);
-                InicioSesionController.iniciarcerrar(FinalizacionController.labelCerrar, actual);
-                
-                
-            }
-            
-        }
-        
 
     }
-      @FXML
+
+    @FXML
+    void Pagar(ActionEvent event) throws IOException {
+        if (rb2.isSelected() == true) {
+            if (txtnumero.getText() == "" || txtCVV.getText() == "" || txtcodigo.getText() == "") {
+                try {
+                    throw new DatosIncompletosExcpetion("Completa los datos");
+                } catch (DatosIncompletosExcpetion a) {
+                    Alert alerta = new Alert(AlertType.INFORMATION);
+                    alerta.setTitle("Información");
+                    alerta.setHeaderText(null);
+                    alerta.setContentText("Completa los datos");
+                    alerta.showAndWait();
+                }
+
+            } else {
+                actual = (Stage) ResumenPedido.getScene().getWindow();
+                Scene sc = new Scene(App.loadFXML("/Vistas/Finalizacion"));
+                actual.setScene(sc);
+                InicioSesionController.iniciarcerrar(FinalizacionController.labelCerrar, actual);
+
+            }
+        } else {
+            if (rb1.isSelected() == true) {
+                Stage actual = (Stage) ResumenPedido.getScene().getWindow();
+                Scene sc = new Scene(App.loadFXML("/Vistas/Finalizacion"));
+                actual.setScene(sc);
+                InicioSesionController.iniciarcerrar(FinalizacionController.labelCerrar, actual);
+
+            }
+
+        }
+
+    }
+
+    @FXML
     void Cancelar(ActionEvent event) {
-        Stage actual= (Stage) ResumenPedido.getScene().getWindow();
-        Stage cancelacion=new Stage();
-        VBox root=new VBox();
-        Button confirmar =new Button();
-         Button cancelar =new Button();
-        HBox botones=new HBox();
-        Label label= new Label("Seguro quieres cancelar¿?");
+        Stage actual = (Stage) ResumenPedido.getScene().getWindow();
+        Stage cancelacion = new Stage();
+        VBox root = new VBox();
+        Button confirmar = new Button();
+        Button cancelar = new Button();
+        HBox botones = new HBox();
+        Label label = new Label("¿Seguro qué quieres cancelar?");
         root.setAlignment(Pos.CENTER);
         botones.setAlignment(Pos.CENTER);
-        confirmar.setOnAction(e->{
-        cancelacion.close();
+        confirmar.setOnAction(e -> {
+            cancelacion.close();
             actual.close();
         });
-        cancelar.setOnAction(A->{
-        cancelacion.close();});
-        botones.getChildren().addAll(confirmar,cancelar);
-        root.getChildren().addAll(label,botones);
-        Scene sc=new Scene(root,400,560);
+        cancelar.setOnAction(A -> {
+            cancelacion.close();
+        });
+        botones.getChildren().addAll(confirmar, cancelar);
+        root.getChildren().addAll(label, botones);
+        Scene sc = new Scene(root, 400, 560);
         cancelacion.setScene(sc);
         cancelacion.show();
 
     }
-    
-    
-    
-    
+
 }

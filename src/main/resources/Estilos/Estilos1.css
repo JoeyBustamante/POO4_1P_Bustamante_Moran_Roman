@@ -26,7 +26,7 @@ Label{
     
     }
 #Fondo{
-    -fx-background-image:url("/imagen/Fondo3.jpg");
+    -fx-background-image:url("/imagen/fondo3.jpg");
     -fx-background-size:cover;
         
     }

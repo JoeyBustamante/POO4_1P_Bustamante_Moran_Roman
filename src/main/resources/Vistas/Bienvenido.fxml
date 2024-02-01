@@ -8,15 +8,20 @@
 
 <VBox fx:id="Fondo" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="807.0" spacing="40.0" stylesheets="@../Estilos/Estilos1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.BienvenidoController">
    <children>
-      <Label fx:id="Bienvenido" text="Label">
+      <Label fx:id="Bienvenido" alignment="CENTER" prefHeight="96.0" prefWidth="370.0" textFill="#20287c">
          <font>
-            <Font name="Broadway" size="12.0" />
+            <Font name="Tw Cen MT Condensed" size="64.0" />
          </font>
       </Label>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="90.0" prefWidth="157.0" spacing="20.0">
+      <Label fx:id="NombreMsg" alignment="CENTER" prefHeight="79.0" prefWidth="359.0" textFill="#2a329a">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="56.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="90.0" prefWidth="366.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#encontrar" text="Promociones" />
-            <Button mnemonicParsing="false" onAction="#ReservarVuelo" prefHeight="35.0" prefWidth="130.0" text="ReservarVuelo" />
+            <Button mnemonicParsing="false" onAction="#encontrar" text="Promociones del mes" />
+            <Button mnemonicParsing="false" onAction="#ReservarVuelo" prefHeight="35.0" prefWidth="158.0" text="Reserva tu vuelo" />
          </children>
       </VBox>
    </children>

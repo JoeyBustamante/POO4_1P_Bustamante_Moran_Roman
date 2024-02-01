@@ -97,8 +97,5 @@ public class Vuelo implements Comparable<Vuelo>{
     public int compareTo(Vuelo o) {
        return this.getDuracion()-o.getDuracion();
     }
-   
-   
-   
-    
+
 }

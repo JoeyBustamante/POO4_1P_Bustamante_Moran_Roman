@@ -42,15 +42,11 @@ import javafx.stage.Stage;
 public class InicioSesionController implements Initializable {
 
     private ArrayList<Usuario> ListaUsuarios = new ArrayList<>();
-
     public static Usuario usuarioSeleccionado;
-
     @FXML
     TextField usuario;
-
     @FXML
     TextField contra;
-
     @FXML
     private HBox root;
 
@@ -72,14 +68,14 @@ public class InicioSesionController implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+        } catch (Exception d) {
+            d.printStackTrace();
+            System.out.println(d.getMessage());
         }
 
     }
 
-    //Metodo que carga los usuarios en el sistema
+//Metodo que carga los usuarios en el sistema
     private ArrayList<Usuario> IniciarUsuarios() {
         ArrayList<Usuario> listaUsu = new ArrayList<>();
         try {
@@ -95,8 +91,9 @@ public class InicioSesionController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-
         }
+
+        
         return listaUsu;
     }
 
@@ -107,7 +104,9 @@ public class InicioSesionController implements Initializable {
             if (usu.getUsuario().equals(usuario.getText()) && usu.getContra().equals(contra.getText())) {
                 despliegue = true;
                 usuarioSeleccionado = usu;
+
             }
+
             if (despliegue == true) {
                 Alert al = new Alert(Alert.AlertType.INFORMATION);
                 al.setContentText("Credenciales válidas");
@@ -117,7 +116,7 @@ public class InicioSesionController implements Initializable {
             } else {
                 Alert al = new Alert(Alert.AlertType.INFORMATION);
                 al.setContentText("Credenciales no válidas");
-                al.setTitle("Informacion");
+                al.setTitle("Información");
                 al.showAndWait();
             }
         }
@@ -133,9 +132,9 @@ public class InicioSesionController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+        }catch (Exception d) {
+            d.printStackTrace();
+            System.out.println(d.getMessage());
         }
 
     }
@@ -147,7 +146,7 @@ public class InicioSesionController implements Initializable {
      */
     public static void cerrar(Label label, Stage escenario) {
         for (int i = 5; i != 0; i--) {
-            String status = "Cerrando en " + i + " segundos...      ";
+            String status = "Cerrando en " + i + " segundos..                                ";
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
@@ -159,9 +158,6 @@ public class InicioSesionController implements Initializable {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
                 System.out.println(ex.getMessage());
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
             }
         }
         Platform.runLater(new Runnable() {
