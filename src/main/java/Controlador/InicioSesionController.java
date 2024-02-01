@@ -7,6 +7,7 @@ package Controlador;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,11 +42,15 @@ import javafx.stage.Stage;
 public class InicioSesionController implements Initializable {
 
     private ArrayList<Usuario> ListaUsuarios = new ArrayList<>();
+
     public static Usuario usuarioSeleccionado;
+
     @FXML
     TextField usuario;
+
     @FXML
     TextField contra;
+
     @FXML
     private HBox root;
 
@@ -64,14 +69,18 @@ public class InicioSesionController implements Initializable {
             );
             Background background = new Background(backgroundImage);
             root.setBackground(background);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
-        // TODO
     }
 
-    private ArrayList<Usuario> IniciarUsuarios() {//Metodo que carga los usuarios en el sistema
+    //Metodo que carga los usuarios en el sistema
+    private ArrayList<Usuario> IniciarUsuarios() {
         ArrayList<Usuario> listaUsu = new ArrayList<>();
         try {
             File fl = new File("src/main/resources/Textos/Cliente.txt");
@@ -85,6 +94,7 @@ public class InicioSesionController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
 
         }
         return listaUsu;
@@ -97,18 +107,16 @@ public class InicioSesionController implements Initializable {
             if (usu.getUsuario().equals(usuario.getText()) && usu.getContra().equals(contra.getText())) {
                 despliegue = true;
                 usuarioSeleccionado = usu;
-
             }
-
             if (despliegue == true) {
                 Alert al = new Alert(Alert.AlertType.INFORMATION);
-                al.setContentText("credenciales validas");
-                al.setTitle("Informacion");
+                al.setContentText("Credenciales válidas");
+                al.setTitle("Información");
                 al.showAndWait();
                 CambiarEscena();
             } else {
                 Alert al = new Alert(Alert.AlertType.INFORMATION);
-                al.setContentText("credenciales no validas");
+                al.setContentText("Credenciales no válidas");
                 al.setTitle("Informacion");
                 al.showAndWait();
             }
@@ -122,8 +130,12 @@ public class InicioSesionController implements Initializable {
             FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/Vistas/Bienvenido.fxml"));
             Scene sc = new Scene(fxmlloader.load(), 807, 480);
             actual.setScene(sc);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
@@ -135,8 +147,9 @@ public class InicioSesionController implements Initializable {
      */
     public static void cerrar(Label label, Stage escenario) {
         for (int i = 5; i != 0; i--) {
-            String status = "Cerrando en " + i + " segundos..                                ";
+            String status = "Cerrando en " + i + " segundos...      ";
             Platform.runLater(new Runnable() {
+                @Override
                 public void run() {
                     label.setText(status);
                 }
@@ -145,9 +158,14 @@ public class InicioSesionController implements Initializable {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+                System.out.println(ex.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
         Platform.runLater(new Runnable() {
+            @Override
             public void run() {
                 escenario.close();
             }
@@ -163,6 +181,7 @@ public class InicioSesionController implements Initializable {
      */
     public static void iniciarcerrar(Label label, Stage escenario) {
         Thread dormir2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 cerrar(label, escenario);
             }
